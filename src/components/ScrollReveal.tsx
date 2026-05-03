@@ -51,10 +51,12 @@ export function StaggerContainer({
   children,
   className = "",
   staggerDelay = 0.1,
+  style,
 }: {
   children: ReactNode;
   className?: string;
   staggerDelay?: number;
+  style?: React.CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -72,6 +74,7 @@ export function StaggerContainer({
         },
       }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>
