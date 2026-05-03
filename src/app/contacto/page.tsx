@@ -182,7 +182,7 @@ export default function ContactoPage() {
             </div>
           </ScrollReveal>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "1.5rem" }}>
+          <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "1.5rem" }}>
             {sedes.map((sede) => (
               <StaggerItem key={sede.city}>
                 <a
@@ -208,7 +208,7 @@ export default function ContactoPage() {
                 </a>
               </StaggerItem>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
     </div>
