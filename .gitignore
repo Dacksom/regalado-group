@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scraper tools (not needed in production)
+scraped_data/
+*.py
+public/hero.jpg
+public/propiedades/

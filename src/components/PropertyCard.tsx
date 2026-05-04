@@ -13,10 +13,11 @@ export function PropertyCard({ property, index = 0 }: { property: Property; inde
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
+      style={{ height: "100%" }}
     >
-      <Link href={`/inmuebles/${property.id}`} className="block property-card group">
+      <Link href={`/inmuebles/${property.id}`} className="block property-card group" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
         {/* Image */}
-        <div className="relative overflow-hidden" style={{ aspectRatio: "16/11" }}>
+        <div className="relative overflow-hidden" style={{ aspectRatio: "16/11", flexShrink: 0 }}>
           <Image
             src={property.images[0]}
             alt={property.title}
@@ -56,8 +57,8 @@ export function PropertyCard({ property, index = 0 }: { property: Property; inde
           </div>
         </div>
 
-        {/* Content — generous padding */}
-        <div style={{ padding: "1.5rem 1.5rem 1.75rem" }}>
+        {/* Content — flex-grow to fill remaining space */}
+        <div style={{ padding: "1.5rem 1.5rem 1.75rem", display: "flex", flexDirection: "column", flexGrow: 1 }}>
           {/* Price */}
           <p
             className="font-semibold"
@@ -66,10 +67,10 @@ export function PropertyCard({ property, index = 0 }: { property: Property; inde
             {formatPrice(property.price, property.currency, property.isMonthly)}
           </p>
 
-          {/* Title */}
+          {/* Title — fixed 2 lines */}
           <h3
             className="font-medium line-clamp-2"
-            style={{ color: "var(--text-primary)", fontSize: "0.9375rem", lineHeight: 1.5, marginBottom: "0.5rem" }}
+            style={{ color: "var(--text-primary)", fontSize: "0.9375rem", lineHeight: 1.5, marginBottom: "0.5rem", minHeight: "2.8125rem" }}
           >
             {property.title}
           </h3>
@@ -79,10 +80,10 @@ export function PropertyCard({ property, index = 0 }: { property: Property; inde
             {property.zone} · {property.type}
           </p>
 
-          {/* Specs */}
+          {/* Specs — pushed to bottom */}
           <div
             className="flex items-center"
-            style={{ gap: "1.25rem", paddingTop: "1.25rem", borderTop: "1px solid var(--border-color)" }}
+            style={{ gap: "1.25rem", paddingTop: "1.25rem", borderTop: "1px solid var(--border-color)", marginTop: "auto" }}
           >
             {property.bedrooms && (
               <div className="flex items-center" style={{ gap: "0.375rem", color: "var(--text-secondary)", fontSize: "0.8125rem" }}>
