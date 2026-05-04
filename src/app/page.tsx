@@ -43,10 +43,10 @@ export default function HomePage() {
         >
           <source src="/hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.55)" }} />
+        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.40)" }} />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(9,9,9,0.98) 100%)" }}
+          style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(9,9,9,0.95) 100%)" }}
         />
 
         <div className="relative z-10 text-center" style={{ padding: "0 clamp(1.5rem, 5vw, 3rem)", maxWidth: "800px" }}>
