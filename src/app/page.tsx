@@ -33,13 +33,16 @@ export default function HomePage() {
           HERO — Full viewport, cinematic
          ════════════════════════════════════════ */}
       <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: "100vh" }}>
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&h=1080&fit=crop&q=80')",
-            transform: "scale(1.05)",
-          }}
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ transform: "scale(1.05)" }}
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.55)" }} />
         <div
           className="absolute inset-0"
