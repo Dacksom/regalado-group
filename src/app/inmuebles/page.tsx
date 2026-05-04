@@ -132,7 +132,7 @@ function InmueblesContent() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6" style={{ gap: "1rem" }}>
                   {[
                     { label: "Tipo", value: filterType, setter: setFilterType, options: ["Casa", "Apartamento", "Local", "Galpón", "Terreno", "Oficina", "TownHouse"], all: "Todos" },
-                    { label: "Ubicación", value: filterCity, setter: setFilterCity, options: [{ v: "Zulia", l: "Edo. Zulia" }, { v: "Caracas", l: "Caracas / Miranda" }, { v: "Falcón", l: "Edo. Falcón" }], all: "Toda Venezuela" },
+                    { label: "Estado", value: filterCity, setter: setFilterCity, options: [{ v: "Zulia", l: "Edo. Zulia" }, { v: "Caracas", l: "Caracas / Miranda" }, { v: "Falcón", l: "Edo. Falcón" }], all: "Toda Venezuela" },
                     { label: "Zona", value: filterZone, setter: setFilterZone, options: ["Zona Norte", "Zona Sur", "Zona Este", "Zona Oeste", "Centro"], all: "Todas" },
                     { label: "Estatus", value: filterStatus, setter: setFilterStatus, options: ["Venta", "Alquiler"], all: "Todos" },
                     { label: "Precio", value: filterPrice, setter: setFilterPrice, options: [{ v: "0-500", l: "$0 — $500/mes" }, { v: "500-1000", l: "$500 — $1K/mes" }, { v: "0-100000", l: "Hasta $100K" }, { v: "100000-200000", l: "$100K — $200K" }, { v: "200000-9999999", l: "$200K+" }], all: "Cualquiera" },

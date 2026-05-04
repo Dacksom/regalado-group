@@ -156,7 +156,7 @@ export default function HomePage() {
 
                 <div>
                   <label className="block uppercase tracking-[0.1em] font-medium" style={{ color: "var(--text-muted)", fontSize: "0.6875rem", marginBottom: "0.75rem" }}>
-                    Ubicación
+                    Estado
                   </label>
                   <select value={searchCity} onChange={(e) => setSearchCity(e.target.value)} className="search-select">
                     <option value="">Toda Venezuela</option>
