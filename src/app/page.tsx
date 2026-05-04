@@ -75,7 +75,7 @@ export default function HomePage() {
             </h1>
 
             <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "clamp(0.875rem, 2.5vw, 1.0625rem)", lineHeight: 1.7, marginBottom: "3.5rem", fontWeight: 300 }}>
-              26 años de experiencia inmobiliaria. Más de 70 asesores
+              26 años de experiencia inmobiliaria. Más de 70 asesores{" "}
               <br className="hidden sm:block" />
               comprometidos con hacer realidad tu inversión.
             </p>
