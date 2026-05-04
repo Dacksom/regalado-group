@@ -176,7 +176,7 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
                 <div className="flex items-center" style={{ gap: "1rem", marginBottom: "2rem", paddingBottom: "2rem", borderBottom: "1px solid var(--border-color)" }}>
                   <div
                     className="relative overflow-hidden flex-shrink-0"
-                    style={{ width: "72px", height: "72px", borderRadius: "18px", background: "var(--gold-subtle)" }}
+                    style={{ width: "100px", height: "100px", borderRadius: "20px", background: "var(--gold-subtle)" }}
                   >
                     <Image
                       src={getAdvisorImage(property.agent)}
@@ -184,7 +184,7 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
                       fill
                       className="object-cover"
                       style={{ objectPosition: "top center" }}
-                      sizes="72px"
+                      sizes="100px"
                     />
                   </div>
                   <div>

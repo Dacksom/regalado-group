@@ -24,6 +24,7 @@ export default function HomePage() {
   const [searchType, setSearchType] = useState("");
   const [searchZone, setSearchZone] = useState("");
   const [searchPrice, setSearchPrice] = useState("");
+  const [searchStatus, setSearchStatus] = useState("");
 
   const featuredProperties = properties.filter((p) => p.featured).slice(0, 3);
 
@@ -124,7 +125,7 @@ export default function HomePage() {
                 padding: "clamp(2rem, 4vw, 3rem)",
               }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-4" style={{ gap: "1.25rem", alignItems: "end" }}>
+              <div className="grid grid-cols-1 md:grid-cols-5" style={{ gap: "1.25rem", alignItems: "end" }}>
                 <div>
                   <label className="block uppercase tracking-[0.1em] font-medium" style={{ color: "var(--text-muted)", fontSize: "0.6875rem", marginBottom: "0.75rem" }}>
                     Tipo de Inmueble
@@ -138,6 +139,17 @@ export default function HomePage() {
                     <option value="Terreno">Terreno</option>
                     <option value="Oficina">Oficina</option>
                     <option value="TownHouse">TownHouse</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block uppercase tracking-[0.1em] font-medium" style={{ color: "var(--text-muted)", fontSize: "0.6875rem", marginBottom: "0.75rem" }}>
+                    Estado
+                  </label>
+                  <select value={searchStatus} onChange={(e) => setSearchStatus(e.target.value)} className="search-select">
+                    <option value="">Venta y Alquiler</option>
+                    <option value="Venta">Venta</option>
+                    <option value="Alquiler">Alquiler</option>
                   </select>
                 </div>
 
@@ -170,7 +182,7 @@ export default function HomePage() {
                 </div>
 
                 <Link
-                  href={`/inmuebles?type=${searchType}&zone=${searchZone}&price=${searchPrice}`}
+                  href={`/inmuebles?type=${searchType}&zone=${searchZone}&price=${searchPrice}&status=${searchStatus}`}
                   className="btn-primary"
                   style={{ height: "fit-content" }}
                 >

@@ -13,7 +13,7 @@ function InmueblesContent() {
 
   const [filterType, setFilterType] = useState<string>(searchParams.get("type") || "");
   const [filterZone, setFilterZone] = useState<string>(searchParams.get("zone") || "");
-  const [filterStatus, setFilterStatus] = useState<string>("");
+  const [filterStatus, setFilterStatus] = useState<string>(searchParams.get("status") || "");
   const [filterPrice, setFilterPrice] = useState<string>(searchParams.get("price") || "");
   const [filterBedrooms, setFilterBedrooms] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState("");
