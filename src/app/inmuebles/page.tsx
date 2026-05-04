@@ -12,6 +12,7 @@ function InmueblesContent() {
   const searchParams = useSearchParams();
 
   const [filterType, setFilterType] = useState<string>(searchParams.get("type") || "");
+  const [filterCity, setFilterCity] = useState<string>(searchParams.get("city") || "");
   const [filterZone, setFilterZone] = useState<string>(searchParams.get("zone") || "");
   const [filterStatus, setFilterStatus] = useState<string>(searchParams.get("status") || "");
   const [filterPrice, setFilterPrice] = useState<string>(searchParams.get("price") || "");
@@ -27,6 +28,15 @@ function InmueblesContent() {
       result = result.filter((p) => p.title.toLowerCase().includes(q) || p.code.toLowerCase().includes(q) || p.address.toLowerCase().includes(q));
     }
     if (filterType) result = result.filter((p) => p.type === filterType);
+    if (filterCity) {
+      const city = filterCity.toLowerCase();
+      // Match against address, or default to Maracaibo if "Zulia" is selected and no other city is in address
+      if (city === "zulia") {
+        result = result.filter(p => p.address.toLowerCase().includes("maracaibo") || p.address.toLowerCase().includes("zulia") || (!p.address.toLowerCase().includes("caracas") && !p.address.toLowerCase().includes("falcón") && !p.address.toLowerCase().includes("miranda") && !p.address.toLowerCase().includes("coro")));
+      } else {
+        result = result.filter((p) => p.address.toLowerCase().includes(city) || p.title.toLowerCase().includes(city));
+      }
+    }
     if (filterZone) result = result.filter((p) => p.zone === filterZone);
     if (filterStatus) result = result.filter((p) => p.status === filterStatus);
     if (filterBedrooms) result = result.filter((p) => p.bedrooms && p.bedrooms >= parseInt(filterBedrooms));
@@ -41,10 +51,10 @@ function InmueblesContent() {
       default: result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     }
     return result;
-  }, [searchQuery, filterType, filterZone, filterStatus, filterPrice, filterBedrooms, sortBy]);
+  }, [searchQuery, filterType, filterCity, filterZone, filterStatus, filterPrice, filterBedrooms, sortBy]);
 
-  const activeFilters = [filterType, filterZone, filterStatus, filterPrice, filterBedrooms].filter(Boolean).length;
-  const clearFilters = () => { setFilterType(""); setFilterZone(""); setFilterStatus(""); setFilterPrice(""); setFilterBedrooms(""); setSearchQuery(""); };
+  const activeFilters = [filterType, filterCity, filterZone, filterStatus, filterPrice, filterBedrooms].filter(Boolean).length;
+  const clearFilters = () => { setFilterType(""); setFilterCity(""); setFilterZone(""); setFilterStatus(""); setFilterPrice(""); setFilterBedrooms(""); setSearchQuery(""); };
 
   return (
     <div className="page-transition" style={{ paddingTop: "6rem" }}>
@@ -119,9 +129,10 @@ function InmueblesContent() {
                   marginBottom: "var(--space-lg)",
                 }}
               >
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5" style={{ gap: "1rem" }}>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6" style={{ gap: "1rem" }}>
                   {[
                     { label: "Tipo", value: filterType, setter: setFilterType, options: ["Casa", "Apartamento", "Local", "Galpón", "Terreno", "Oficina", "TownHouse"], all: "Todos" },
+                    { label: "Ubicación", value: filterCity, setter: setFilterCity, options: [{ v: "Zulia", l: "Edo. Zulia" }, { v: "Caracas", l: "Caracas / Miranda" }, { v: "Falcón", l: "Edo. Falcón" }], all: "Toda Venezuela" },
                     { label: "Zona", value: filterZone, setter: setFilterZone, options: ["Zona Norte", "Zona Sur", "Zona Este", "Zona Oeste", "Centro"], all: "Todas" },
                     { label: "Estatus", value: filterStatus, setter: setFilterStatus, options: ["Venta", "Alquiler"], all: "Todos" },
                     { label: "Precio", value: filterPrice, setter: setFilterPrice, options: [{ v: "0-500", l: "$0 — $500/mes" }, { v: "500-1000", l: "$500 — $1K/mes" }, { v: "0-100000", l: "Hasta $100K" }, { v: "100000-200000", l: "$100K — $200K" }, { v: "200000-9999999", l: "$200K+" }], all: "Cualquiera" },

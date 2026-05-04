@@ -25,6 +25,7 @@ export default function HomePage() {
   const [searchZone, setSearchZone] = useState("");
   const [searchPrice, setSearchPrice] = useState("");
   const [searchStatus, setSearchStatus] = useState("");
+  const [searchCity, setSearchCity] = useState("");
 
   const featuredProperties = properties.filter((p) => p.featured).slice(0, 3);
 
@@ -125,13 +126,13 @@ export default function HomePage() {
                 padding: "clamp(2rem, 4vw, 3rem)",
               }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-5" style={{ gap: "1.25rem", alignItems: "end" }}>
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6" style={{ gap: "1.25rem", alignItems: "end" }}>
                 <div>
                   <label className="block uppercase tracking-[0.1em] font-medium" style={{ color: "var(--text-muted)", fontSize: "0.6875rem", marginBottom: "0.75rem" }}>
                     Tipo de Inmueble
                   </label>
                   <select value={searchType} onChange={(e) => setSearchType(e.target.value)} className="search-select">
-                    <option value="">Todos los tipos</option>
+                    <option value="">Todos</option>
                     <option value="Casa">Casa</option>
                     <option value="Apartamento">Apartamento</option>
                     <option value="Local">Local</option>
@@ -144,12 +145,24 @@ export default function HomePage() {
 
                 <div>
                   <label className="block uppercase tracking-[0.1em] font-medium" style={{ color: "var(--text-muted)", fontSize: "0.6875rem", marginBottom: "0.75rem" }}>
-                    Estado
+                    Estatus
                   </label>
                   <select value={searchStatus} onChange={(e) => setSearchStatus(e.target.value)} className="search-select">
                     <option value="">Venta y Alquiler</option>
                     <option value="Venta">Venta</option>
                     <option value="Alquiler">Alquiler</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block uppercase tracking-[0.1em] font-medium" style={{ color: "var(--text-muted)", fontSize: "0.6875rem", marginBottom: "0.75rem" }}>
+                    Ubicación
+                  </label>
+                  <select value={searchCity} onChange={(e) => setSearchCity(e.target.value)} className="search-select">
+                    <option value="">Toda Venezuela</option>
+                    <option value="Zulia">Edo. Zulia / Maracaibo</option>
+                    <option value="Caracas">Caracas / Miranda</option>
+                    <option value="Falcón">Edo. Falcón</option>
                   </select>
                 </div>
 
@@ -182,7 +195,7 @@ export default function HomePage() {
                 </div>
 
                 <Link
-                  href={`/inmuebles?type=${searchType}&zone=${searchZone}&price=${searchPrice}&status=${searchStatus}`}
+                  href={`/inmuebles?type=${searchType}&zone=${searchZone}&price=${searchPrice}&status=${searchStatus}&city=${searchCity}`}
                   className="btn-primary"
                   style={{ height: "fit-content" }}
                 >
