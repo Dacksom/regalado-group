@@ -40,11 +40,11 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
         </Link>
       </div>
 
-      {/* Hero Image — swipeable, full-width on mobile */}
-      <div style={{ marginBottom: "var(--space-md)" }}>
+      {/* Hero Image — swipeable on mobile, cinematic on desktop */}
+      <div className="container-main" style={{ marginBottom: "var(--space-md)" }}>
         <div
           className="overflow-x-auto hide-scrollbar"
-          style={{ scrollSnapType: "x mandatory", display: "flex", gap: "0.5rem", padding: "0 clamp(1rem, 3vw, 2rem)" }}
+          style={{ scrollSnapType: "x mandatory", display: "flex", gap: "0.75rem" }}
         >
           {property.images.map((img, i) => (
             <motion.div
@@ -52,11 +52,10 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative overflow-hidden flex-shrink-0"
+              className="relative overflow-hidden flex-shrink-0 property-hero-img"
               style={{
                 borderRadius: "20px",
                 width: property.images.length === 1 ? "100%" : "85%",
-                aspectRatio: "4/3",
                 scrollSnapAlign: "center",
               }}
             >
@@ -66,14 +65,14 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
                 fill
                 className="object-cover"
                 priority={i === 0}
-                sizes="(max-width: 768px) 90vw, 70vw"
+                sizes="(max-width: 768px) 90vw, 1200px"
               />
             </motion.div>
           ))}
         </div>
 
         {/* Badges — below image */}
-        <div className="container-main flex items-center" style={{ gap: "0.625rem", marginTop: "var(--space-sm)" }}>
+        <div className="flex items-center" style={{ gap: "0.625rem", marginTop: "var(--space-sm)" }}>
           <span className={`badge ${property.status === "Venta" ? "badge-sale" : "badge-rent"}`} style={{ fontSize: "0.6875rem", padding: "0.3rem 0.875rem" }}>
             {property.status}
           </span>
